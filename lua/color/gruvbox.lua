@@ -12,12 +12,12 @@ require("gruvbox").setup({
   invert_intend_guides = false,
   contrast = "hard",
   overrides = {
-		LspReferenceRead = { bg = "None" },
-		LspReferenceText = { bg = "None" },
-		LspReferenceWrite = { bg = "None" },
-		Pmenu = { bg = "None" },
-		Keyword = { bold = true },
-		SignColumn = { bg = "#2e2e2e" },
-  	},
+    LspReferenceRead = { bg = "None" },
+    LspReferenceText = { bg = "None" },
+    LspReferenceWrite = { bg = "None" },
+    Pmenu = { bg = "None" },
+    Keyword = { bold = true },
+    SignColumn = { bg = "#2e2e2e" },
+  },
 })
 vim.cmd("colorscheme gruvbox")

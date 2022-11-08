@@ -1,5 +1,5 @@
 -- remember folds
-vim.cmd[[
+vim.cmd [[
 	augroup remember_folds
   	  autocmd!
   	  autocmd BufWinLeave ?* mkview 1
@@ -7,6 +7,6 @@ vim.cmd[[
 	augroup END
 ]]
 
-vim.cmd[[
+vim.cmd [[
 	autocmd Filetype c setlocal ts=4 sw=4 sts=0 expandtab
 ]]
