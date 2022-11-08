@@ -6,3 +6,7 @@ vim.cmd[[
   	  autocmd BufWinEnter ?* silent! loadview 1
 	augroup END
 ]]
+
+vim.cmd[[
+	autocmd Filetype c setlocal ts=4 sw=4 sts=0 expandtab
+]]

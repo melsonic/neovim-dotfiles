@@ -2,7 +2,8 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
 
 -- Setup nvim-cmp.
 local cmp = require('cmp')
--- local luasnip = require('luasnip')
+local luasnip = require('luasnip')
+local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 local kind_icons = {
 	Text = "",
@@ -32,10 +33,10 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
---local function has_words_before()
---	local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
---	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
---end
+local function has_words_before()
+	local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+end
 
 cmp.setup({
 	formatting = {
@@ -55,21 +56,70 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+	mapping = {
+		['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+		['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+		['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+		['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
+
 		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	}),
+		['<CR>'] = cmp.mapping.confirm({ select = false }),
+
+		['<C-d>'] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(1) then
+				luasnip.jump(1)
+			else
+				fallback()
+			end
+		end, { 'i', 's' }),
+
+		['<C-b>'] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { 'i', 's' }),
+
+		-- using tab to move down in the suggestions menu
+		['<Tab>'] = cmp.mapping(function(fallback)
+			local col = vim.fn.col('.') - 1
+
+			if cmp.visible() then
+				cmp.select_next_item(select_opts)
+			elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+				fallback()
+			else
+				cmp.complete()
+			end
+		end, { 'i', 's' }),
+
+		-- using shift tab to move up in the suggestions menu
+		['<S-Tab>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item(select_opts)
+			else
+				fallback()
+			end
+		end, { 'i', 's' }),
+	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
 		{ name = 'nvim_lsp_signature_help' },
 	}, {
-		{ name = 'buffer' },
-	})
+		{ name = 'buffer', keyword_length = 5 },
+	}),
+	experimental = {
+		ghost_text = true
+	}
 })
+
+
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -80,8 +130,8 @@ cmp.setup.filetype('gitcommit', {
 	})
 })
 
--- require filetype luasnip 
+-- require filetype luasnip
 require('../luasnip')
 
 -- Setup lspconfig.
-capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())

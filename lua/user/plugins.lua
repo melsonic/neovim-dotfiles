@@ -64,6 +64,8 @@ return packer.startup(function(use)
 
 	use 'williamboman/nvim-lsp-installer'
 
+	use 'nvim-tree/nvim-web-devicons'
+
 	-- Autocompletion
 	use 'hrsh7th/nvim-cmp'
 
@@ -78,7 +80,7 @@ return packer.startup(function(use)
 	use 'saadparwaiz1/cmp_luasnip'
 
 	-- Formatting
-	use 'jose-elias-alvarez/null-ls.nvim'
+	-- use 'jose-elias-alvarez/null-ls.nvim'
 
 	use {
 		'numToStr/Comment.nvim',
@@ -128,10 +130,10 @@ return packer.startup(function(use)
 	-- use 'p00f/nvim-ts-rainbow' -- coloring braces
 
 	-- Lua
-	use {
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim"
-	}
+--	use {
+--		"folke/todo-comments.nvim",
+--		requires = "nvim-lua/plenary.nvim"
+--	}
 
 	-- show hex colors
 	use { 'norcalli/nvim-colorizer.lua' }

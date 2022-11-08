@@ -1,4 +1,3 @@
-
 --import Lua Modules
 require('user.options') -- general settings
 require('user.autocmds')
@@ -22,10 +21,8 @@ require('plugged.symbols_outline')
 require('plugged.todo-comments')
 require('plugged.colorizer')
 
-vim.cmd [[ hi Normal guibg=none ]] -- TODO: make it in lua
+-- vim.cmd [[ hi Normal guibg=none ]] -- TODO: make it in lua
 
-vim.cmd [[ 
-	highlight Visual cterm=NONE ctermbg=76 ctermfg=16 gui=NONE guibg=#4f4f4c
-]]
-
- 
+--vim.cmd [[
+--	highlight Visual cterm=NONE ctermbg=76 ctermfg=16 gui=NONE guibg=#4f4f4c
+--]]

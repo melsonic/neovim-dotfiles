@@ -15,6 +15,8 @@ opt.smartindent = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
+opt.cindent = true
+opt.expandtab = true -- makes indentation using spaces
 opt.swapfile = false
 opt.wrap = true
 opt.encoding = "utf-8"
@@ -35,7 +37,7 @@ opt.ignorecase = true
 opt.signcolumn = "yes" -- "number" make signs appear in the number column
 opt.laststatus = 3
 -- indent by additional 2 chars on wrapped lines
-opt.breakindentopt = { 'shift:2', 'min:60', 'sbr' }
+opt.breakindentopt = { 'shift:4', 'min:60', 'sbr' }
 opt.guitablabel = '[%N] %t %M'
 
 ---------- ########################### ----------------
@@ -63,19 +65,14 @@ g.loaded_vimball = 1
 g.loaded_vimballPlugin = 1
 g.cursorhold_updatetime = 100
 
--- vim.cmd [[
---   " ident by an additional 2 characters on wrapped lines, when line >= 40 characters, put 'showbreak' at start of line
---   set breakindentopt=shift:2,min:40,sbr
--- 	set guitablabel=\[%N\]\ %t\ %M
--- ]]
 
 -- make winSeparator little thick
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#928374', bold = true })
 
-vim.cmd[[ 
-set listchars=tab:\┊\ 
-set list
-"	set listchars=tab:\┊\ 
-"	set list
-]]
+-- vim.cmd[[ 
+-- set listchars=tab:\┊\ 
+-- set list
+-- "	set listchars=tab:\┊\ 
+-- "	set list
+-- ]]
 

@@ -16,10 +16,8 @@ vim.cmd [[
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   " open terminal on ctrl+normal
   function! OpenTerminal()
-    split term://powershell -NoLogo
+    split term://bash
     resize 10
   endfunction
   nnoremap <c-n> :call OpenTerminal()<CR>
 ]]
-
-
