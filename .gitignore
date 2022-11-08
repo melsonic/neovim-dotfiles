@@ -1,2 +1,3 @@
 /plugin
 .null-ls-root
+.luarc.json
