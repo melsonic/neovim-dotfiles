@@ -12,10 +12,9 @@ opt.relativenumber = true
 opt.showmatch = true
 opt.autoindent = true
 opt.smartindent = true
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.cindent = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
 opt.expandtab = true -- makes indentation using spaces
 opt.swapfile = false
 opt.wrap = true
@@ -68,11 +67,4 @@ g.cursorhold_updatetime = 100
 
 -- make winSeparator little thick
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#928374', bold = true })
-
--- vim.cmd[[ 
--- set listchars=tab:\┊\ 
--- set list
--- "	set listchars=tab:\┊\ 
--- "	set list
--- ]]
 

@@ -10,3 +10,12 @@ vim.cmd [[
 vim.cmd [[
 	autocmd Filetype c setlocal ts=4 sw=4 sts=0 expandtab
 ]]
+
+-- vim.cmd[[
+--     autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr>
+-- ]]
+
+-- run java code
+vim.cmd[[
+    autocmd Filetype java nnoremap <F9> :new term://java %<CR>
+]]

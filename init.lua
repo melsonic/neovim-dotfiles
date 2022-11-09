@@ -14,7 +14,6 @@ require('plugged.lualine')
 require('lsp.init')
 require('plugged.telescope')
 require('plugged.which-key')
--- require('plugged.symbols_outline')
-require('plugged.todo-comments')
+require('plugged.cp')
 require('plugged.colorizer')
 
