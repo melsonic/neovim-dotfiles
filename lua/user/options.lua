@@ -12,10 +12,11 @@ opt.relativenumber = true
 opt.showmatch = true
 opt.autoindent = true
 opt.smartindent = true
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.expandtab = true -- makes indentation using spaces
+opt.cindent = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.expandtab = false -- makes indentation using spaces
 opt.swapfile = false
 opt.wrap = true
 opt.encoding = "utf-8"
@@ -38,11 +39,18 @@ opt.laststatus = 3
 -- indent by additional 2 chars on wrapped lines
 opt.breakindentopt = { 'shift:4', 'min:60', 'sbr' }
 opt.guitablabel = '[%N] %t %M'
-
+opt.list = true
+-- opt.listchars:append "tab:»"
+-- opt.listchars:append "eol:↴"
+-- opt.listchars:append({ eol = '↴' })
+opt.listchars = {
+	tab = '» ',
+	eol = '↴'
+}
 ---------- ########################### ----------------
 
-g.do_filetype_lua = 1 -- use filetype.lua
-g.did_load_filetypes = 0 -- don't use filetype.vim
+-- g.do_filetype_lua = 1 -- use filetype.lua
+-- g.did_load_filetypes = 0 -- don't use filetype.vim
 g.highlighturl_enabled = true -- highlight URL by default
 g.zipPlugin = false
 g.load_black = false
@@ -66,5 +74,4 @@ g.cursorhold_updatetime = 100
 
 
 -- make winSeparator little thick
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#928374', bold = true })
-
+-- vim.api.nvim_set_hl(0, 'WinSeparator', { fg="None", bold = true })

@@ -23,9 +23,9 @@ require('onedark').setup {
 
   -- Custom Highlights --
   colors = {}, -- Override default colors
-  highlights = {
-    SignColumn = { bg = '#323742' },
-  }, -- Override highlight groups
+--   highlights = {
+--     SignColumn = { bg = '#323742' },
+--   }, -- Override highlight groups
 
   -- Plugins Config --
   diagnostics = {
