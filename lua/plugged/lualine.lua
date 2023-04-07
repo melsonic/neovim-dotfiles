@@ -6,7 +6,7 @@ require('lualine').setup {
 		section_separators = { left = '', right = '' },
 		disabled_filetypes = {},
 		always_divide_middle = true,
-		globalstatus = false,
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { 'mode' },
@@ -28,5 +28,5 @@ require('lualine').setup {
 	extensions = {}
 }
 
-vim.cmd [[ " adding the flags to NERDTree
-let g:webdevicons_enable_nerdtree = 1 ]]
+-- vim.cmd [[ " adding the flags to NERDTree
+-- let g:webdevicons_enable_nerdtree = 1 ]]

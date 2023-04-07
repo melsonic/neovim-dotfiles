@@ -11,11 +11,11 @@ vim.cmd [[
   " start terminal in insert mode
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   " open terminal on ctrl+normal
-  function! OpenTerminal()
-    split term://bash
+  function! OpenHorizontalTerminal()
+    split term://zsh
     resize 10
   endfunction
-  nnoremap <c-n> :call OpenTerminal()<CR>
+  nnoremap <c-n> :call OpenHorizontalTerminal()<CR>
 ]]
 
 vim.cmd [[
@@ -24,11 +24,16 @@ vim.cmd [[
       " start terminal in insert mode
       au BufEnter * if &buftype == 'terminal' | :startinsert | endif
       " open terminal on ctrl+normal
-      function! OpenVert()
-        vsplit term://bash
+      function! OpenVerticalTerminal()
+        vsplit term://zsh
+				vertical resize 40
       endfunction
-      nnoremap <leader>vs :call OpenVert()<CR>
+      nnoremap <leader>vs :call OpenVerticalTerminal()<CR>
 
+]]
+
+vim.cmd[[
+	autocmd TermOpen * setlocal nonumber norelativenumber
 ]]
 
 --[[

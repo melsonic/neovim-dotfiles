@@ -24,7 +24,7 @@ opt.updatetime = 3000
 opt.linebreak = true -- makes it not to wrap in the middle of a word
 opt.breakindent = true
 opt.cursorline = true
-opt.cursorlineopt = "number" -- Highlight only the screen line of the cursor with CursorLine
+opt.cursorlineopt = "both" -- Highlight only the screen line of the cursor with CursorLine
 opt.preserveindent = true
 opt.sidescrolloff = 8
 opt.scrolloff = 4
@@ -40,12 +40,10 @@ opt.laststatus = 3
 opt.breakindentopt = { 'shift:4', 'min:60', 'sbr' }
 opt.guitablabel = '[%N] %t %M'
 opt.list = true
--- opt.listchars:append "tab:»"
--- opt.listchars:append "eol:↴"
--- opt.listchars:append({ eol = '↴' })
+-- »
 opt.listchars = {
-	tab = '» ',
-	eol = '↴'
+  tab = '  ',
+  eol = '↴'
 }
 ---------- ########################### ----------------
 

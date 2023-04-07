@@ -1,12 +1,12 @@
 require 'nvim-treesitter.configs'.setup {
-    ensure_installed = "cpp",
+	ensure_installed = "cpp",
 	highlight = {
 		enable = true,
 		disable = { 'html' },
 	},
 	indent = {
 		enable = true,
-		disable = { 'python' , 'cpp'},
+		disable = { 'python', 'cpp' },
 	},
 	autotag = {
 		enable = true,

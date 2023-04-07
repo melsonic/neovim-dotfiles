@@ -7,9 +7,6 @@ vim.cmd [[
 	augroup END
 ]]
 
-vim.cmd [[
-	autocmd Filetype c setlocal ts=4 sw=4 sts=0 expandtab
-]]
 
 -- run java code
 vim.cmd[[
@@ -20,5 +17,14 @@ vim.cmd[[
 -- run cpp code
 vim.cmd[[
     autocmd Filetype cpp nnoremap <F8> :vsplit term://g++ -std=c++17 -Wshadow -Wall '%:t' -O2 -Wno-unused-result && ./a.out && rm a.out<CR>
+]]
+
+-- only highlight cursorline if window is active
+vim.cmd[[
+	augroup BgHighlight
+    	autocmd!
+    	autocmd WinEnter * set cul
+    	autocmd WinLeave * set nocul
+	augroup END
 ]]
 

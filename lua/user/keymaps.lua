@@ -34,3 +34,12 @@ vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 vim.keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
 vim.keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
+
+-- use <C-s> to save
+vim.keymap.set("i", "<C-s>", "<cmd>w<CR>")
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>")
+
+-- use <C-x> to exit
+vim.keymap.set("i", "<C-x>", "<cmd>wqa<CR>")
+vim.keymap.set("n", "<C-x>", "<cmd>wqa<CR>")
+

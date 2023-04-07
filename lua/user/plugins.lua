@@ -15,14 +15,14 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path
-  })
+	Packer_bootstrap = fn.system({
+		'git',
+		'clone',
+		'--depth',
+		'1',
+		'https://github.com/wbthomason/packer.nvim',
+		install_path
+	})
 end
 
 -- Autocommand that reloads neovim whenever you save the packer_init.lua file
@@ -36,93 +36,100 @@ vim.cmd [[
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
-  return
+	return
 end
 
 -- Have packer use a popup window
 packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
+	display = {
+		open_fn = function()
+			return require("packer.util").float { border = "rounded" }
+		end,
+	},
 }
 
 return packer.startup(function(use)
 
-  use 'wbthomason/packer.nvim' -- packer can manage itself
+	use 'wbthomason/packer.nvim' -- packer can manage itself
 
-  use { "ellisonleao/gruvbox.nvim" } -- gruvbox colorscheme
+	use { "ellisonleao/gruvbox.nvim" } -- gruvbox colorscheme
 
-  use 'navarasu/onedark.nvim' -- atom one dark colorscheme
+	use 'navarasu/onedark.nvim' -- atom one dark colorscheme
 
-  use 'windwp/nvim-autopairs' -- nvim generate autopair
+	use 'martinsione/darkplus.nvim' -- vscode dark theme
 
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
+	use 'windwp/nvim-autopairs' -- nvim generate autopair
 
-  use 'williamboman/nvim-lsp-installer'
+	use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
 
-  use 'nvim-tree/nvim-web-devicons'
+	use 'williamboman/nvim-lsp-installer'
 
-  -- Autocompletion
-  use 'hrsh7th/nvim-cmp'
+	use 'nvim-tree/nvim-web-devicons'
 
-  -- from lsp
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+	-- Autocompletion
+	use 'hrsh7th/nvim-cmp'
 
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
+	-- from lsp
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
-  use 'l3mon4d3/luasnip'
-  use 'saadparwaiz1/cmp_luasnip'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
 
-
-  -- autotag
-  use 'windwp/nvim-ts-autotag'
-
-  -- statusline
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons', opt = true
-    }
-  }
-
-  -- telescope - Find, Filter, Preview, Pick. All lua, all the time.
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-
-  -- file window
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    }
-  }
-
-  -- syntax highlighting, indentation etc
-  use {
-    'nvim-treesitter/nvim-treesitter'
-  }
-
-  -- show keybindings
-  use 'folke/which-key.nvim'
-
-  -- improved performance
-  use 'lewis6991/impatient.nvim'
+	use 'l3mon4d3/luasnip'
+	use 'saadparwaiz1/cmp_luasnip'
 
 
-  -- show hex colors
-  use { 'norcalli/nvim-colorizer.lua' }
+	-- autotag
+	use 'windwp/nvim-ts-autotag'
 
-  -- fix cursorHold autocmd update time
-  use { 'antoinemadec/FixCursorHold.nvim' }
+	-- statusline
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = {
+			'kyazdani42/nvim-web-devicons', opt = true
+		}
+	}
 
-  ---@diagnostic disable-next-line: undefined-global
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+	-- telescope - Find, Filter, Preview, Pick. All lua, all the time.
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
+
+	-- file window
+	use {
+  	'nvim-tree/nvim-tree.lua',
+  	requires = {
+    	'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  	},
+	}
+
+	-- syntax highlighting, indentation etc
+	use {
+		'nvim-treesitter/nvim-treesitter'
+	}
+
+	-- improved performance
+	use 'lewis6991/impatient.nvim'
+
+
+	-- show hex colors
+	use { 'norcalli/nvim-colorizer.lua' }
+
+	-- fix cursorHold autocmd update time
+	use { 'antoinemadec/FixCursorHold.nvim' }
+
+	-- comment plugin
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
+
+	---@diagnostic disable-next-line: undefined-global
+	if PACKER_BOOTSTRAP then
+		require("packer").sync()
+	end
 end)

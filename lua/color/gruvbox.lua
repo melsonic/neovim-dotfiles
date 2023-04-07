@@ -1,29 +1,3 @@
--- setup must be called before loading the colorscheme
--- Default options:
---[[
-require("gruvbox").setup({
-	undercurl = true,
-	underline = true,
-	bold = true,
-	italic = true, -- will make italic comments and special strings
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	invert_selection = true,
-	invert_signs = false,
-	invert_tabline = false,
-	invert_intend_guides = false,
-	contrast = "hard",
-	overrides = {
-		LspReferenceRead = { bg = "None" },
-		LspReferenceText = { bg = "None" },
-		LspReferenceWrite = { bg = "None" },
-		Pmenu = { bg = "None" },
-		Keyword = { bold = true },
-		--      SignColumn = { bg = "None" },
-	},
-})
-vim.cmd("colorscheme gruvbox")
-
---]]
 
 
 
@@ -49,9 +23,13 @@ require("gruvbox").setup({
 		LspReferenceWrite = { bg = "None" },
 		Pmenu = { bg = "None" },
 		Keyword = { bold = true },
+-- 		CursorLine = { bg = "None" },
+--		Search = { bg = "None" },
+--		Float = { bg = "None" },
+
 	},
 	dim_inactive = false,
-	transparent_mode = true,
+	transparent_mode = false,
 })
 vim.cmd("colorscheme gruvbox")
 

@@ -3,7 +3,7 @@ require('telescope').setup {
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
 		file_ignore_patterns = {
-			"node_modules"
+			"node_modules",
 		},
 		mappings = {
 
